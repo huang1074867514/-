@@ -24,7 +24,7 @@ const RoomPageWrapper: React.FC = () => {
 
 const AppWithRouter: React.FC = () => {
   return (
-    <Router>
+    <Router basename={process.env.NODE_ENV === 'production' ? '/-' : '/'}>
       <AppContent />
     </Router>
   );
@@ -50,7 +50,7 @@ const AppContent: React.FC = () => {
     <div className="min-h-screen">
       <Routes>
         {/* 首页 */}
-        <Route path="/" element={<HomePage onLocalMode={handleLocalMode} onEnterRoom={handleEnterRoom} />} />
+        <Route path="" element={<HomePage onLocalMode={handleLocalMode} onEnterRoom={handleEnterRoom} />} />
 
         {/* 房间管理页面 */}
         <Route path="/rooms" element={<RoomsPage onEnterRoom={handleEnterRoom} />} />
@@ -59,7 +59,7 @@ const AppContent: React.FC = () => {
         <Route path="/room/:roomId" element={<RoomPageWrapper />} />
 
         {/* 默认重定向 */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="" replace />} />
       </Routes>
 
       {/* Toast Container */}

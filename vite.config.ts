@@ -5,8 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      // GitHub Pages 部署配置
-      base: mode === 'production' ? '/' : '/', // 自定义域名使用根路径
+      // GitHub Pages 部署配置 - HashRouter 不需要特殊路径配置
+      base: mode === 'production' ? './' : '/', // 生产环境使用相对路径
       server: {
         port: 3000,
         host: '0.0.0.0',
