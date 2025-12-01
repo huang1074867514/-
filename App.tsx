@@ -24,7 +24,7 @@ const RoomPageWrapper: React.FC = () => {
 
 const AppWithRouter: React.FC = () => {
   return (
-    <Router basename={process.env.NODE_ENV === 'production' ? '/-' : '/'}>
+    <Router>
       <AppContent />
     </Router>
   );
